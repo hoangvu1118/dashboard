@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Monitoring System</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <!-- Chart.js from CDN for graphing -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Sensor Monitoring System</h1>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="sidebar">
+                <h2>Sensors</h2>
+                <div class="sensor-list">
+                    {% if sensors %}
+                        {% for sensor in sensors %}
+                            <div class="sensor-item" data-sensor-id="{{ sensor.id }}">
+                                <div class="sensor-info">
+                                    <span class="sensor-name">{{ sensor.id }}</span>
+                                    <span class="hub-name">Hub: {{ sensor.hub_id }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No sensors found. Waiting for data...</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="sensor-details">
+                    <h2 id="selected-sensor">Select a sensor</h2>
+                    
+                    <div class="charts-container">
+                        <div class="chart-box">
+                            <h3>Temperature</h3>
+                            <canvas id="tempChart"></canvas>
+                        </div>
+                        
+                        <div class="chart-box">
+                            <h3>Humidity</h3>
+                            <canvas id="humidityChart"></canvas>
+                        </div>
+                        
+                        <div class="chart-box">
+                            <h3>Moisture</h3>
+                            <canvas id="moistureChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="latest-reading">
+                        <h3>Latest Reading</h3>
+                        <div id="latest-data">
+                            <p>No data selected</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Sensor Monitoring System - 2025</p>
+    </footer>
+    
+    <script src="{{ url_for('static', path='/js/charts.js') }}"></script>
+</body>
+</html>
