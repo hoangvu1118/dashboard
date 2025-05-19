@@ -11,28 +11,6 @@ Features
     Automatic polling with duplicate data prevention
     Sensor and hub management
 
-Project Structure
-
-sensor_monitor/
-├── app/
-│   ├── __init__.py
-│   ├── main.py            # FastAPI application entry point
-│   ├── mqtt_client.py     # MQTT subscription handling
-│   ├── database.py        # Database models and connection
-│   ├── api.py             # API routes
-│   └── static/            # Static assets
-│       ├── css/
-│       │   └── style.css
-│       └── js/
-│           └── charts.js  # Minimal JavaScript for charts
-│   └── templates/         # HTML templates
-│       ├── base.html
-│       └── index.html
-├── requirements.txt       # Project dependencies
-├── config.py              # Configuration settings
-├── run.py                 # Application runner
-└── simulate_sensors.py    # Script to simulate sensor data for testing
-
 Prerequisites
 
     Python 3.8 or higher
