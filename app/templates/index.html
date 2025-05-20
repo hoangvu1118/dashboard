@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
     <!-- Chart.js from CDN for graphing -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <!-- Add script to check if Chart.js loaded correctly -->
+    <script>
+        window.addEventListener('load', function() {
+            console.log("Window loaded, Chart.js available:", typeof Chart !== 'undefined');
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -23,7 +29,7 @@
                             <div class="sensor-item" data-sensor-id="{{ sensor.id }}">
                                 <div class="sensor-info">
                                     <span class="sensor-name">{{ sensor.id }}</span>
-                                    <span class="hub-name">Hub: {{ sensor.hub_id }}</span>
+                                    <span class="hub-name">Hub: {{ sensor.hub_id or 'Unknown' }}</span>
                                 </div>
                             </div>
                         {% endfor %}

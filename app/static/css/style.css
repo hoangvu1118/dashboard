@@ -127,15 +127,13 @@ main {
     padding: 1rem;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    height: 300px;
-    position: relative;
-    width: 100%;
+    height: 300px; /* Add fixed height */
 }
 
+/* Add specific styling for charts */
 canvas {
     width: 100% !important;
     height: 250px !important;
-    display: block;
 }
 
 .chart-box h3 {
@@ -155,33 +153,7 @@ canvas {
 
 .latest-reading h3 {
     color: #2c3e50;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 0.5rem;
-}
-
-.reading-item {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px dashed #eee;
-}
-
-.reading-label {
-    font-weight: bold;
-    color: #555;
-}
-
-.reading-value {
-    font-family: monospace;
-    color: #2c3e50;
-}
-
-.chart-wrapper {
-    height: 250px;
-    width: 100%;
-    position: relative;
 }
 
 /* Responsive design */

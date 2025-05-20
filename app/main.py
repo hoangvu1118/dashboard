@@ -54,11 +54,33 @@ async def periodic_message_processing():
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request, db: Session = Depends(get_db)):
     sensors = get_all_sensors(db)
+    
+    # Log some debug info
+    print(f"Index page loaded. Found {len(sensors)} sensors.")
+    if sensors:
+        for sensor in sensors:
+            print(f"Sensor: {sensor.id}, Hub: {sensor.hub_id}")
+    
     return templates.TemplateResponse(
         "index.html", 
         {"request": request, "sensors": sensors}
     )
 
+# Add a debug route at the root level
+@app.get("/debug", response_class=HTMLResponse)
+async def debug_page(request: Request):
+    """Simple debug page to check if system is working"""
+    return """
+    <html>
+        <head><title>Sensor Monitor Debug</title></head>
+        <body>
+            <h1>Sensor Monitor Debug Page</h1>
+            <p>The application is running.</p>
+            <p>Check <a href="/api/debug">API debug info</a>.</p>
+            <p><a href="/">Go to main page</a></p>
+        </body>
+    </html>
+    """
 
 # Run with: uvicorn app.main:app --reload
 if __name__ == "__main__":
